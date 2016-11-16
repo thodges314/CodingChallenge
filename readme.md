@@ -13,7 +13,7 @@ then the overlap between the second and third entry should be detected and the r
 ###strategy
 
 ####RangeObject
-This was attacked by creating an object `RangeObject` to represent a single range of zip code values.  Each RangeObject has private members `high`, `low` and `length` representing the high and low range values and the length of the range (the number of zip codes in the range; these are set by the constructor, with length computed as `high-low+1`).  These have publicly exposed getter methods, but `RangeObject` is immutable so there are no setters.
+This was attacked by creating an object `RangeObject` to represent a single range of zip code values.  Each `RangeObject` has private members `high`, `low` and `length` representing the high and low range values and the length of the range (the number of zip codes in the range; these are set by the constructor, with length computed as `high-low+1`).  These have publicly exposed getter methods, but `RangeObject` is immutable so there are no setters.
 
 The method of detecting overlap between any two `RangeObject` instances uses a variation on the Triangle Inequality which states that the sum of the lengths of any two sides of a triangle must be less than the length of the third side.  By finding the distance between the extremes of any two `RangeObject`s, the lowest of their low values and the highest of their high values, and comparing that distance to the sum of the lengths of the two objects, it's determined that only if this combined range is less than or equal to the two summed ranges that the ranges overlap.
 
