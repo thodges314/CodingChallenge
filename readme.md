@@ -1,5 +1,5 @@
 
-## CodingChallange
+## CodingChallenge
 
 ###goal
 The goal of this project is that a shipper may be receiving ranges of five digit zip codes that they are not permitted to ship packages to.  These lists of ranges may come from various sources and may come in any order, and it is necessary to condense these lists into a single list that expresses forbidden zip codes in as few entries as possible.  For example, if one were to receive the following entries:
@@ -56,4 +56,3 @@ Presently errors are presented as an alert dialog with the stackTrace of the off
 However, if you would like to run this from the command line, simply provide your data after the command.  As demonstrated below, the output is presented without decoration, making it possible to be piped directly into an output file in usable format.
 
 ![](http://i64.tinypic.com/71gwlu.png)
-
