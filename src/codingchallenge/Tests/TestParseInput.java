@@ -11,12 +11,17 @@ import codingchallenge.*;
  * @author thodges
  */
 public class TestParseInput {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
-        RangeSet testSet = ParseInput.parseInputString("[94133,94133] [94200,94299] [94226,94339]");
+        RangeSet testSet = ParseInput.parseInput("[94133,94133] [94200,94299] [94226,94339]");
         System.out.println(testSet);
         
         String[] inputArray = {"[94133,94133]","[94200,94299]"," [94226,94339]"};
-        testSet = ParseInput.parseInputArray(inputArray);
+        testSet = ParseInput.parseInput(inputArray);
         System.out.println(testSet);
     }
     

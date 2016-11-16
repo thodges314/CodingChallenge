@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallange/CodingChallange.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/Tests/TestRangeObject.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/Tests/TestParseInput.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/CodingChallange.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/RangeObject.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/Tests/TestRangeSet.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/ParseInput.java</file>
+            <file>file:/home/thodges/NetBeansProjects/CodingChallange/src/codingchallenge/RangeSet.java</file>
         </group>
     </open-files>
 </project-private>

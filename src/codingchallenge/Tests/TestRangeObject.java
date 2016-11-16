@@ -12,6 +12,11 @@ import codingchallenge.RangeObject;
  * @author thodges
  */
 public class TestRangeObject {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
         RangeObject range1 = new RangeObject(94133,94133);
         RangeObject range2 = new RangeObject(94200, 94299);

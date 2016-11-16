@@ -12,6 +12,11 @@ import codingchallenge.RangeSet;
  * @author thodges
  */
 public class TestRangeSet {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         RangeSet rangeSet = new RangeSet();
         rangeSet.addRange(new RangeObject(94133,94133));
