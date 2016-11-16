@@ -1,6 +1,5 @@
 package codingchallenge;
 
-import java.util.*;
 import codingchallenge.GUI.*;
 
 /**
@@ -30,6 +29,7 @@ public class CodingChallange {
         if (args.length != 0) {
             displayRanges(ParseInput.parseInput(args));
         } else {
+            System.out.println("You should see a window shortly.");
             DrawWindow.launch(args);
         }
     }
@@ -41,9 +41,9 @@ public class CodingChallange {
      * @param rangeSet
      */
     private static void displayRanges(RangeSet rangeSet) {
-        for (RangeObject rangeObject : rangeSet) {
+        rangeSet.stream().forEach((rangeObject) -> {
             System.out.print(rangeObject + " ");
-        }
+        });
         System.out.println();
     }
 

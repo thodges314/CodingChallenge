@@ -21,21 +21,27 @@ public class ParseInput {
      * @see RangeObject
      */
     public static RangeSet parseInput(String inputString) {
-        String[] splitStrings = inputString.split("\\]\\s*\\[");
-        splitStrings[0] = splitStrings[0].replaceAll("\\s*\\[", "");
-        splitStrings[splitStrings.length - 1]
-                = splitStrings[splitStrings.length - 1].replaceAll("\\]\\s*", "");
+            String[] splitStrings = inputString.split("\\]\\s*\\[");
+            splitStrings[0] = splitStrings[0].replaceAll("\\s*\\[", "");
+            splitStrings[splitStrings.length - 1]
+                    = splitStrings[splitStrings.length - 1].replaceAll("\\]\\s*", "");
 
-        RangeSet returnSet = new RangeSet();
-        try {
-            for (String pair : splitStrings) {
-                String[] splitPair = pair.split("\\,\\s*");
-                returnSet.addRange(new RangeObject(Integer.parseInt(splitPair[0]),
-                        Integer.parseInt(splitPair[1])));
+            RangeSet returnSet = new RangeSet();
+            try {
+                for (String pair : splitStrings) {
+                    String[] splitPair = pair.split("\\,\\s*");
+                    int smallValue = Integer.parseInt(splitPair[0]);
+                    int largeValue = Integer.parseInt(splitPair[1]);
+                    if (smallValue > largeValue) {
+                        throw new Exception("in \\[" + smallValue + "," + largeValue
+                                + "\\], smaller value must preceed larger value.");
+                    } else {
+                        returnSet.addRange(new RangeObject(smallValue, largeValue));
+                    }
+                }
+            } catch (Exception ex) {
+                Emergency.alert(ex);
             }
-        } catch (Exception ex) {
-            Emergency.alert(ex);
-        }
         return returnSet;
     }
 
@@ -53,11 +59,21 @@ public class ParseInput {
      */
     public static RangeSet parseInput(String[] inputStringsArray) {
         RangeSet returnSet = new RangeSet();
-        for (String pair : inputStringsArray) {
-            pair = pair.replaceAll("(\\s*\\[|\\]\\s*)", "");
-            String[] splitPair = pair.split("\\,\\s*");
-            returnSet.addRange(new RangeObject(Integer.parseInt(splitPair[0]),
-                    Integer.parseInt(splitPair[1])));
+        try {
+            for (String pair : inputStringsArray) {
+                pair = pair.replaceAll("(\\s*\\[|\\]\\s*)", "");
+                String[] splitPair = pair.split("\\,\\s*");
+                int smallValue = Integer.parseInt(splitPair[0]);
+                int largeValue = Integer.parseInt(splitPair[1]);
+                if (smallValue > largeValue) {
+                    throw new Exception("in \\[" + smallValue + "," + largeValue
+                            + "\\], smaller value must preceed larger value.");
+                } else {
+                    returnSet.addRange(new RangeObject(smallValue, largeValue));
+                }
+            }
+        } catch (Exception ex) {
+            Emergency.alert(ex);
         }
         return returnSet;
     }

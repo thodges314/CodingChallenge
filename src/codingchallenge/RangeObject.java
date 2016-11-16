@@ -7,9 +7,9 @@ package codingchallenge;
  * @author Thomas Hodges
  */
 public class RangeObject implements Comparable<RangeObject> {
-    private int high;
-    private int low;
-    private int length;
+    private final int high;
+    private final int low;
+    private final int length;
     
     /**
      * contructs a range object from low and high range values, sets
@@ -66,15 +66,12 @@ public class RangeObject implements Comparable<RangeObject> {
     //comparing that sum to the length between the lowest low point and the 
     //highest high point.  If this combined length is lesser than or equal to
     //the sum of the individual lengths than the ranges can be said to overlap.
-    //To illustrate: [---[==]-] < [------] + [----]
+    //To illustrate: [---[==]-] <= [------] + [----]
     public boolean overlap(RangeObject rangeObject){
         int lowestPoint = Math.min(low, rangeObject.getLow());
         int highestPoint = Math.max(high, rangeObject.getHigh());
         int combinedLength = measureLength(lowestPoint, highestPoint);
-        if (combinedLength <= length + rangeObject.getLength())
-            return true;
-        else
-            return false;
+        return combinedLength <= (length + rangeObject.getLength());
     }
     
     /**
@@ -88,10 +85,14 @@ public class RangeObject implements Comparable<RangeObject> {
         return new RangeObject(lowestPoint, highestPoint);
     }
     
+    @Override
     public String toString(){
         return "["+low+","+high+"]";
     }
     
+    //because the entries in RangeObject are non-overlapping, they can be sorted
+    //using their lower values as indexes
+    @Override
     public int compareTo(RangeObject rangeObject){
         if (low < rangeObject.getLow())
             return -1;

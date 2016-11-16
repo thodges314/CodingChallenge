@@ -34,18 +34,17 @@ public class RangeSet extends TreeSet<RangeObject> {
 
     private RangeSet getMergeSet(RangeObject rangeObject) {
         RangeSet returnSet = new RangeSet();
-        for (RangeObject testObject : this) {
-            if (rangeObject.overlap(testObject)) {
-                returnSet.add(testObject);
-            }
-        }
+        this.stream().filter((testObject) -> (rangeObject.overlap(testObject)))
+                .forEach((testObject) -> {
+                    returnSet.add(testObject);
+                });
         return returnSet;
     }
 
     private void removeAll(RangeSet removeSet) {
-        for (RangeObject removeObject : removeSet) {
+        removeSet.stream().forEach((removeObject) -> {
             this.remove(removeObject);
-        }
+        });
     }
 
     private RangeObject
@@ -56,11 +55,11 @@ public class RangeSet extends TreeSet<RangeObject> {
         return rangeObject;
     }
 
+    @Override
     public String toString() {
         String outString = "";
-        for (RangeObject outObject : this) {
-            outString += (outObject.toString() + " ");
-        }
+        outString = this.stream().map((outObject) -> (outObject.toString() + " "))
+                .reduce(outString, String::concat);
         return outString;
     }
 

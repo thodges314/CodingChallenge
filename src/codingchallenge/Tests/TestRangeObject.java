@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package codingchallenge.Tests;
 
 import codingchallenge.RangeObject;
 
 /**
- *
- * @author thodges
+ *Tests constructors, the length parameter, and overlap and merge 
+ * methods on RangeObject objects.  This was used for early stage testing.
+ * 
+ * @author Thomas Hodges
  */
 public class TestRangeObject {
 
     /**
-     *
-     * @param args
+     *Creates three RangeObjects, get's their length, finds out which
+     * overlap and generates a new RangeObject by merging two of the
+     * old
+     * 
+     * @param args an environment rariable in a java 'main' method
      */
     public static void main(String[] args){
         RangeObject range1 = new RangeObject(94133,94133);

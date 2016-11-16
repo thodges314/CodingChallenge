@@ -1,21 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package codingchallenge.Tests;
 import codingchallenge.RangeObject;
 import codingchallenge.RangeSet;
 
 /**
- *
- * @author thodges
+ *Tests composition, merging and ssorting on the RangeSet class.
+ * 
+ * @author Thomas Hodges
  */
 public class TestRangeSet {
 
     /**
-     *
-     * @param args
+     *Creates a RangeSet, assigns 6 RangeObjects to it with varying
+     * stages of overlap, and prints the result.
+     * 
+     * @param args an environment rariable in a java 'main' method
      */
     public static void main(String[] args) {
         RangeSet rangeSet = new RangeSet();
