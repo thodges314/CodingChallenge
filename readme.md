@@ -26,6 +26,7 @@ In `RangeSet`, rather than overwriting the `add` method, I created a new `addRan
 2. remove all entries that are also in `mergeSet`.
 3. iterate the new `RangeObject` over the entries in `mergeSet`, merging them all into one large `RangeObject`.  The object being added to the set is redefined as this new merged obect.
 4. add the new `RangeObject` to the `RangeSet`.
+
 Should the `mergeSet` in step 1 be empty, we jump straight from there to step 4.
 
 
