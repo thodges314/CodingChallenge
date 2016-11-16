@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package codingchallenge.GUI;
+
 import java.io.*;
 import javafx.stage.*;
 
@@ -12,6 +13,7 @@ import javafx.stage.*;
  * @author thodges
  */
 public class FileIO {
+
     public static File getFile(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("open");
@@ -19,8 +21,9 @@ public class FileIO {
         if (file != null) {
             return file;
         }
-        return null;       
+        return null;
     }
+
     public static File putFile(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("save");

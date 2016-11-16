@@ -12,7 +12,6 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
-import javafx.event.ActionEvent;
 import java.io.*;
 import java.util.Scanner;
 
@@ -24,22 +23,27 @@ public class DrawWindow extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        TextField tfOriginal = new TextField();
-        tfOriginal.setMinHeight(250);
-        tfOriginal.setScaleShape(true);// does this help?
-        tfOriginal.setAlignment(Pos.TOP_LEFT);
 
-        TextField tfTranslate = new TextField();
-        tfTranslate.setMinHeight(250);
-        tfTranslate.setEditable(false);
-        //tfTranslate.setText("copy me");
-        tfTranslate.setAlignment(Pos.TOP_LEFT);
+        //define TextArea original
+        TextArea taOriginal = new TextArea();
+        taOriginal.setPrefColumnCount(25);
+        taOriginal.setPrefRowCount(8);
+        taOriginal.setWrapText(true);
 
-        Button btTranslate = new Button("translate");
+        //define TextArea translate
+        TextArea taTranslate = new TextArea();
+        taTranslate.setPrefColumnCount(25);
+        taTranslate.setPrefRowCount(8);
+        taTranslate.setWrapText(true);
+        taTranslate.setEditable(false);
+
+        //define and bind Translate button
+        Button btTranslate = new Button("condense");
         btTranslate.setOnAction(e -> {
-            tfTranslate.setText(ParseInput.parseInput(tfOriginal.getText()).toString());
+            taTranslate.setText(ParseInput.parseInput(taOriginal.getText()).toString());
         });
 
+        //define and bind MenuBar behavior.
         MenuBar menuBar = new MenuBar();
         Menu menuFile = new Menu("File");
         menuBar.getMenus().add(menuFile);
@@ -47,27 +51,31 @@ public class DrawWindow extends Application {
         MenuItem mnuSave = new MenuItem("Save");
         menuFile.getItems().addAll(mnuOpen, mnuSave);
         try {
-            mnuOpen.setOnAction(e -> tfOriginal.setText(loadFile(primaryStage)));
-        } catch (Exception e) {};
-        
-        try {
-            mnuSave.setOnAction(e -> saveFile(primaryStage, tfTranslate.getText()));
-        } catch (Exception e) {};
+            mnuOpen.setOnAction(e -> taOriginal.setText(loadFile(primaryStage)));
+        } catch (Exception e) {
+            Emergency.alert(e);
+        };
 
+        try {
+            mnuSave.setOnAction(e -> saveFile(primaryStage, taTranslate.getText()));
+        } catch (Exception e) {
+            Emergency.alert(e);
+        };
+
+        //define GridPane and add children
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
-
+        pane.setPadding(new Insets(10));
         pane.add(menuBar, 0, 0);
-
-        pane.add(tfOriginal, 0, 1);
-
+        pane.add(taOriginal, 0, 1);
         pane.add(btTranslate, 1, 1);
-
-        pane.add(tfTranslate, 2, 1);
+        pane.add(taTranslate, 2, 1);
         pane.add(new Label("original"), 0, 2);
-        pane.add(new Label("translated"), 2, 2);
+        pane.add(new Label("condensed"), 2, 2);
 
+        //define Scene, Stage, attach scene to stage and make visible
         Scene scene = new Scene(pane);
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Merge zip code ranges.");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -77,25 +85,24 @@ public class DrawWindow extends Application {
         String inData = "";
         try {
             File thisFile = FileIO.getFile(stage);
-            //FileInputStream inFile = new FileInputStream(thisFile);
             Scanner inFile = new Scanner(thisFile);
             inData = inFile.nextLine();
 
             System.out.println(inData + "");
-            //tfOriginal.setText(inData+"");
         } catch (Exception ex) {
         };
         return inData;
     }
-    
-    private void saveFile(Stage stage, String textSave){
+
+    private void saveFile(Stage stage, String textSave) {
         try {
             File saveFile = FileIO.putFile(stage);
             PrintWriter output = new PrintWriter(saveFile);
             output.println(textSave);
             output.close();
-            
-        } catch (Exception e) {};
+
+        } catch (Exception e) {
+        };
     }
 
     public static void launch(String[] args) {
