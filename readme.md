@@ -55,5 +55,5 @@ Presently errors are presented as an alert dialog with the stackTrace of the off
 
 However, if you would like to run this from the command line, simply provide your data after the command.  As demonstrated below, the output is presented without decoration, making it possible to be piped directly into an output file in usable format.
 
-![](http://i64.tinypic.com/a4wvv9.png)
+![](http://i64.tinypic.com/71gwlu.png)
 
