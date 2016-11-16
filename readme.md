@@ -46,7 +46,7 @@ Run `CodingChallenge` by navigating to the `dist` directory and typing:
 
 `java -jar CodingChallenge.jar`
 
-You will be presented with an inteface where you can enter lists of ranges and condense them.
+You will be presented with an interface where you can enter lists of ranges and condense them.
 
 ![](http://i63.tinypic.com/xgeba1.png)
 
