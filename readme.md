@@ -27,7 +27,7 @@ It was decided that the best way to look for overlaps and where needed merge a l
 To accomplish this task, I created `RangeSet` which extends `TreeSet`.  I choose `TreeSet` because it implements the `SortedSet` interface and because of it's considerably faster performance than `ArrayList`.  In order to meet the comaparability requiement for `TreeSet`, I made `RangeObject` comparable via it's lower bound, the thought being that this should be acceptable for completely non-overlapping ranges.
 In `RangeSet`, rather than overwriting the `add` method, I created a new `addRange` method.  This method uses the following steps to add a `RangeObject` to the set:
 
-1. fetch a `RangeSet` called `mergeSet` which contains any entries in the existing set that the new set overlaps
+1. create a `RangeSet` called `mergeSet` which contains any entries in the existing set that the new set overlaps
 
 2. remove all entries that are also in `mergeSet`.
 
