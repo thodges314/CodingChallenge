@@ -37,7 +37,7 @@ In `RangeSet`, rather than overriding the `add` method, I created a new `addRang
 
 Should the `mergeSet` in step 1 be empty, we jump straight from there to step 4.
 
-###Implementation and Use
+###implementation and use
 The original version of this project operated entirely on the command line.  You could either provide your input as a list of parameters when calling the program, or you could call the program and enter the parameters.  This also allowed data to be piped in from a file.
 
 After completing this goal I decided to move to a graphical interface as the primary interface.  You can still call the program with a list of parameters, and even pipe the output to a file if you like, however the graphical interface is the encouraged use.
